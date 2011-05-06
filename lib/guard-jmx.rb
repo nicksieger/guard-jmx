@@ -2,7 +2,7 @@ require 'jmx'
 require 'guard/interactor'
 
 module Guard
-  module JMX
+  class JMX
     class MBean < RubyDynamicMBean
       include ::Guard::Interactor
 
@@ -19,15 +19,13 @@ module Guard
       method_added :stop
     end
 
-    def self.server
+    def server
       @server ||= ::JMX::MBeanServer.new
     end
 
-    def self.register
-      bean = MBean.new "guard.MBean", "Control Guard via JMX"
-      server.register_mbean bean, "guard:type=MBean"
+    def initialize
+      @bean = MBean.new "guard.MBean", "Control Guard via JMX"
+      server.register_mbean @bean, "guard:type=MBean"
     end
-
-    register
   end
 end

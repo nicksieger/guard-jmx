@@ -5,7 +5,7 @@ Expose Guard interactor operations via JMX.
 # Install
 
 1. `gem install guard-jmx` or add `guard-jmx` to your `Gemfile`.
-2. Add `require 'guard-jmx'` to your `Guardfile`.
+2. Add `guard 'jmx'` to your `Guardfile`.
 
 # Why?
 

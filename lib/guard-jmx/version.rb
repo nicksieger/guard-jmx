@@ -1,5 +1,5 @@
 module Guard
-  module JMX
+  class JMX
     VERSION = "0.0.1"
   end
 end
