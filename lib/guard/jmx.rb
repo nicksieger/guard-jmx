@@ -8,21 +8,40 @@ module Guard
 
       operation "Runs all the guards in the project"
       returns :void
-      method_added :run_all
+      def run_all
+        begin
+          super
+        rescue Exception => e
+          @thread.raise(e)
+        end
+      end
 
       operation "Resets all the guards"
       returns :void
-      method_added :reset
+      def reset
+        begin
+          super
+        rescue Exception => e
+          @thread.raise(e)
+        end
+      end
 
       operation "Stops Guard"
       returns :void
-      method_added :stop
+      def stop
+        begin
+          super
+        rescue Exception => e
+          @thread.raise(e)
+        end
+      end
     end
 
     def initialize(watchers=[], options={})
       @bean = MBean.new "guard.MBean", "Control Guard via JMX"
       @server = ::JMX::MBeanServer.new
       @server.register_mbean @bean, "guard:type=MBean"
+      @thread = Thread.current
     end
   end
 end
