@@ -4,7 +4,7 @@ require "guard-jmx/version"
 
 Gem::Specification.new do |s|
   s.name        = "guard-jmx"
-  s.version     = Guard::JMX::VERSION
+  s.version     = Guard::JMXVersion::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Nick Sieger"]
   s.email       = ["nick@nicksieger.com"]
